@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satoshi Game — Cyber Arena Demo</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="background-grid"></div>
+
+  <header class="header">
+    <h1 class="title">SATOSHI <span>ARENA</span></h1>
+    <button class="btn wallet" onclick="addWallet()">💳 Кошелёк</button>
+  </header>
+
+  <main class="container">
+    <section id="dash" class="glass-panel">
+      <div class="dash-header">
+        <h2>Турниры</h2>
+        <button class="btn orange" onclick="openModal()">➕ Создать</button>
+      </div>
+      <div id="list" class="tournament-list">
+        <p class="placeholder">Пока нет турниров — создайте первый!</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content glass-panel">
+      <h3>Создать турнир</h3>
+      <input id="name" placeholder="Название турнира" />
+      <select id="game">
+        <option value="chess">♟️ Шахматы</option>
+        <option value="go">⚫ Го</option>
+        <option value="esports">🎮 Esports</option>
+      </select>
+      <input id="prize" type="number" placeholder="Призовой фонд" />
+      <select id="crypto">
+        <option value="BTC">₿ BTC</option>
+        <option value="SOL">$ SOL</option>
+      </select>
+      <div class="button-group">
+        <button class="btn orange" onclick="saveT()">Создать</button>
+        <button class="btn gray" onclick="closeModal()">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
