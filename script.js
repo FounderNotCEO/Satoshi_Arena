@@ -9,18 +9,25 @@ function openChessBoard(name) {
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.innerHTML = `
-    <div class="modal-content glass-panel">
+    <div class="modal-content glass-panel" style="max-width:600px;">
       <h3>Шахматная доска — ${name}</h3>
-      <iframe src="https://lichess.org/embed?theme=auto&bg=dark"
-        style="width:100%; height:480px; border:0; border-radius:10px;"
-        allowfullscreen>
-      </iframe>
+      <div id="board" style="width:100%;"></div>
       <div class="button-group">
         <button class="btn gray" onclick="this.closest('.modal').remove()">Закрыть</button>
       </div>
     </div>
   `;
   document.body.appendChild(modal);
+
+  // Создание доски
+  const board = Chessboard('board', {
+    draggable: true,
+    position: 'start',
+    onDrop: (source, target, piece) => {
+      console.log(`Перемещено ${piece} с ${source} на ${target}`);
+      return 'snapback'; // пока фигуры просто возвращаются на место
+    }
+  });
 }
 
 function saveT() {
@@ -46,4 +53,3 @@ function saveT() {
   list.appendChild(div);
   closeModal();
 }
-
